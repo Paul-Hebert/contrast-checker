@@ -8,3 +8,6 @@
     - Handle RGBA
 3. Architecture
     - Share code between extension and website
+    - Linting
+    - CSS post/pre processing
+        - Modular scale

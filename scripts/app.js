@@ -1,12 +1,16 @@
 var Color = require("color");
 
 const colorInputs = document.querySelectorAll('.js-color-input');
-
 const foregroundInput = document.getElementById('js-foreground');
 const backgroundInput = document.getElementById('js-background');
-const example = document.getElementById('js-example');
-const contrast = document.getElementById('js-contrast');
 const swapButton = document.getElementById('js-swap');
+
+const contrast = document.getElementById('js-contrast');
+const smallText = document.getElementById('js-small-text');
+const largeText = document.getElementById('js-large-text');
+
+const example = document.getElementById('js-example');
+
 
 init();
 

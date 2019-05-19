@@ -3,14 +3,15 @@
     <head>
         <script src="transpiled-scripts/app.js" defer></script>
         <link rel="stylesheet" href="styles/app.css">
-        <link rel="stylesheet" href="styles/extension.css">
     </head>
     <body>
         <div class="controls">
             <h1>Contrast Checker</h1>
 
+            <p>Enter two colors below to calculate their contrast ratio and WCAG compliance</p>
+
             <form class="colorForm">
-                <input class="colorForm__input js-color-input" type="text" id="js-foreground" value="#f00">
+                <input class="colorForm__input js-color-input" type="text" id="js-foreground" value="#eee">
 
                 <button id="js-swap" class="colorForm__button">
                     <svg class="colorForm__button-icon" viewBox="0 0 128 128" width="24" height="24">
@@ -22,11 +23,19 @@
                     </svg>
                 </button>
 
-                <input class="colorForm__input js-color-input" type="text" id="js-background" value="#ddd">
+                <input class="colorForm__input js-color-input" type="text" id="js-background" value="#437DE7">
             </form>
 
             <div class="output">
-                Contrast: <span id="js-contrast"></span>
+                <p class="output__section">
+                    Contrast: <span id="js-contrast"></span>
+                </p>
+                <p class="output__section">
+                    Large Text: <span id="js-large-text"></span>
+                </p>
+                <p class="output__section">
+                    Small Text: <span id="js-small-text"></span>
+                </p>
             </div>
         </div>
 
