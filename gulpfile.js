@@ -25,7 +25,7 @@ gulp.task("js", () => {
 });
 
 gulp.task('default', done => {
-
+  // TODO: Process JS before watching
   gulp.watch(
       'scripts/**',
       gulp.series('js')
