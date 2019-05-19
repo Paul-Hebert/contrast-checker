@@ -2,9 +2,27 @@
 <html>
     <head>
         <script src="transpiled-scripts/app.js" defer></script>
-        <link rel="stylesheet" href="styles/app.css"></script>
+        <link rel="stylesheet" href="styles/app.css">
+        <link rel="stylesheet" href="styles/extension.css">
     </head>
     <body>
-        <h1>Hello World</h1>
+        <div id="controls">
+            <h1>Contrast Checker</h1>
+
+            <form>
+                <input class="color-input" type="text" id="foreground" value="#f00">
+                <input class="color-input" type="text" id="background" value="#ddd">
+            </form>
+
+            Contrast: <span id="contrast"></span>
+        </div>
+
+        <div id="example">
+            <h2>Lorem Ipsum</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, <b>consectetur adipiscing elit</b>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui <i>officia deserunt mollit anim</i> id est laborum.
+            </p>
+        </div>
     </body>
 </html>

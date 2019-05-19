@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#controls, #example {
+    padding: 1em;
+    height:50vh;
+    overflow: auto;
+}
+
+h1, h2 {
+    margin-bottom: 0.5em;
+}
+
