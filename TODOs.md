@@ -6,3 +6,5 @@
         - Do they have a validation function?
         - Why can't I try/catch in a file rollup processes?
     - Handle RGBA
+3. Architecture
+    - Share code between extension and website
