@@ -12,3 +12,4 @@
     - CSS post/pre processing
         - Modular scale
     - Split JS into logical chunks
+4. Improve Readme
