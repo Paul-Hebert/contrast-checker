@@ -57,7 +57,6 @@ p {
 
 .colorForm__input, .colorForm__button {
     display: flex;
-    padding: 0.5em;
 }
 
 /**
@@ -67,6 +66,7 @@ p {
 .colorForm__input {
     min-width: 0; /* 1 */
     text-align: center;
+    font-size: 1.5em;
 }
 
 .colorForm__button {
@@ -76,8 +76,9 @@ p {
     height: 3em;
     background: var(--color-interaction);
     color: var(--color-white);
-    transform: scale(1.25);
+    transform: scale(1.5);
     border-radius: 50%;
+    padding: 0.5em;
 
     transition: background var(--transition-default), transform var(--transition-default);
 
@@ -86,13 +87,13 @@ p {
 
 .colorForm__button:hover,
 .colorForm__button:focus {
-    transform: scale(1.5);
+    transform: scale(1.65);
     background: var(--color-interaction-hover);
     outline: none;
 }
 
 .colorForm__button:active {
-    transform: scale(1.1);
+    transform: scale(1.25);
 }
 
 .colorForm__button-icon {
