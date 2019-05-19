@@ -6,18 +6,20 @@
         <link rel="stylesheet" href="styles/extension.css">
     </head>
     <body>
-        <div id="controls">
+        <div class="controls">
             <h1>Contrast Checker</h1>
 
             <form>
-                <input class="color-input" type="text" id="foreground" value="#f00">
-                <input class="color-input" type="text" id="background" value="#ddd">
+                <input class="color-input" type="text" id="js-foreground" value="#f00">
+                <input class="color-input" type="text" id="js-background" value="#ddd">
             </form>
 
-            Contrast: <span id="contrast"></span>
+            <div class="output">
+                Contrast: <span id="js-contrast"></span>
+            </div>
         </div>
 
-        <div id="example">
+        <div id="js-example" class="example">
             <h2>Lorem Ipsum</h2>
 
             <p>

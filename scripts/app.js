@@ -2,10 +2,10 @@ var Color = require("color");
 
 const colorInputs = document.querySelectorAll('.color-input');
 
-const foregroundInput = document.getElementById('foreground');
-const backgroundInput = document.getElementById('background');
-const example = document.getElementById('example');
-const contrast = document.getElementById('contrast');
+const foregroundInput = document.getElementById('js-foreground');
+const backgroundInput = document.getElementById('js-background');
+const example = document.getElementById('js-example');
+const contrast = document.getElementById('js-contrast');
 
 init();
 
