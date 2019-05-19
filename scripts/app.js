@@ -1,11 +1,12 @@
 var Color = require("color");
 
-const colorInputs = document.querySelectorAll('.color-input');
+const colorInputs = document.querySelectorAll('.js-color-input');
 
 const foregroundInput = document.getElementById('js-foreground');
 const backgroundInput = document.getElementById('js-background');
 const example = document.getElementById('js-example');
 const contrast = document.getElementById('js-contrast');
+const swapButton = document.getElementById('js-swap');
 
 init();
 
@@ -17,11 +18,24 @@ function init(){
             updateColors();
         });
     })
+
+    // TODO: Handle keyboard event submission
+    swapButton.addEventListener('click', e => {
+        e.preventDefault();
+
+        let oldForeground = foreground();
+        let oldBackground = background();
+
+        foregroundInput.value = oldBackground;
+        backgroundInput.value = oldForeground;
+
+        updateColors();
+    });
 }
 
 function updateColors(){
     if(isValid(foregroundInput.value) && isValid(foregroundInput.value)) {
-        example.style.background = background();
+        document.body.style.background = background();
         example.style.color = foreground();
 
         // ToDo: Investigate odd edge cases mentioned here:

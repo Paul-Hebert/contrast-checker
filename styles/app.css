@@ -1,9 +1,39 @@
+:root {
+    --color-black: #333;
+    --color-white: rgb(245,245,245);
+    --color-white-transparent: rgba(245,245,245,0.95);
+    --color-grey: #999;
+    --color-interaction: rgb(67, 125, 231);
+    --color-interaction-hover: rgb(45, 93, 182);
+
+    --font-body: sans-serif;
+    --font-code: monospace;
+    --font-display: sans-serif;
+
+    --transition-default: ease-out 0.3s;
+}
+
 * {
-    margin: 0;
     box-sizing: border-box;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--color-black);
+    font-family: var(--font-body);
+}
+
+.controls {
+    background: var(--color-white-transparent);
 }
 
 .controls, .example {
+    margin: 1em;
     padding: 1em;
     height:50vh;
     overflow: auto;
@@ -13,3 +43,67 @@ h1, h2 {
     margin-bottom: 0.5em;
 }
 
+.colorForm {
+    display: flex;
+}
+
+.colorForm__input, .colorForm__button {
+    display: flex;
+    padding: 0.5em;
+}
+
+/**
+ * 1. Allow inputs to shrink in flex container:
+ *    https://stackoverflow.com/a/42421490
+ */ 
+.colorForm__input {
+    min-width: 0; /* 1 */
+    text-align: center;
+    border: 1px solid var(--color-interaction);
+}
+
+.colorForm__button {
+    cursor: pointer;
+    flex-basis: auto;
+    width: 3em;
+    height: 3em;
+    background: var(--color-interaction);
+    color: var(--color-white);
+
+    transition: background var(--transition-default), transform var(--transition-default);
+
+    backface-visibility: hidden;
+}
+
+.colorForm__button:hover,
+.colorForm__button:focus {
+    transform: scale(1.1);
+    background: var(--color-interaction-hover);
+}
+
+.colorForm__button:active {
+    transform: scale(0.9);
+}
+
+.colorForm__button-icon {
+    width:100%;
+    height:100%;
+}
+
+.colorForm__button-icon *{
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+
+body {
+    transition: background-color var(--transition-default);
+}
+
+.example h2,
+.example p {
+    transition: color var(--transition-default);
+}
