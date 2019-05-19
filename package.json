@@ -1,0 +1,29 @@
+{
+  "name": "contrast-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paul-Hebert/contrast-checker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paul-Hebert/contrast-checker/issues"
+  },
+  "homepage": "https://github.com/Paul-Hebert/contrast-checker#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "color": "^3.1.1",
+    "gulp": "^4.0.2",
+    "gulp-better-rollup": "^4.0.1",
+    "rollup": "^1.12.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0"
+  }
+}

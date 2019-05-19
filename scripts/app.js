@@ -1,1 +1,1 @@
-document.body.style.background = "#ccc";
+var Color = require("color");
