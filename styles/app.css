@@ -32,6 +32,8 @@ body {
     font-family: var(--font-body);
     line-height: 1.5;
     font-size: 1em;
+    /* This min height ensures firefox renders the popup at a minimum size */
+    min-height: 50em;
 }
 
 .controls {
