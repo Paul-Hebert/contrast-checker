@@ -13,14 +13,25 @@ const ui = {
     example: document.getElementById('js-example'),
 }
 
+const standards = {
+    smallText: {
+        AA: 4.5,
+        AAA: 7
+    },
+    largeText: {
+        AA: 3,
+        AAA: 4.5
+    }
+};
+
 init();
 
 function init(){
-    updateColors();
+    updateView();
 
     ui.colorInputs.forEach(input => {
         input.addEventListener('input', () => {
-            updateColors();
+            updateView();
         });
     })
 
@@ -34,19 +45,40 @@ function init(){
         ui.foregroundInput.value = oldBackground;
         ui.backgroundInput.value = oldForeground;
 
-        updateColors();
+        updateView();
     });
+}
+
+function updateView(){
+    updateColors();
+    updateResults();
 }
 
 function updateColors(){
     if(isValid(ui.foregroundInput.value) && isValid(ui.foregroundInput.value)) {
         document.body.style.background = background();
         ui.example.style.color = foreground();
-
-        // ToDo: Investigate odd edge cases mentioned here:
-        // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
-        ui.contrast.innerText = Color(background()).contrast(Color(foreground())).toFixed(2);
     }
+}
+
+function updateResults(){
+    let contrast = Color(background()).contrast(Color(foreground()));
+
+    // ToDo: Investigate odd edge cases mentioned here:
+    // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
+    ui.contrast.innerText = contrast.toFixed(2);
+
+    Object.keys(standards).forEach(key => {
+        let value = "Fail";
+
+        if(contrast >= standards[key].AAA) {
+            value = "AAA";
+        } else if(contrast >= standards[key].AA) {
+            value = "AA";
+        }
+
+        ui[key].innerText = value;
+    });
 }
 
 function isValid(color) {
