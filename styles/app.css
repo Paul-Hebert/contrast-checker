@@ -71,11 +71,13 @@ p {
     min-width: 0; /* 1 */
     text-align: center;
     font-size: 1.5em;
+    flex-grow: 1;
 }
 
 .colorForm__button {
     cursor: pointer;
     flex-basis: auto;
+    flex-shrink: 0;
     width: 3em;
     height: 3em;
     background: var(--color-interaction);
