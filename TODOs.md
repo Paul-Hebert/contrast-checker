@@ -12,4 +12,5 @@
     - CSS post/pre processing
         - Modular scale
     - Split JS into logical chunks
+    - Tests!
 4. Improve Readme

@@ -24,6 +24,12 @@ const standards = {
     }
 };
 
+const state = {
+    foregroundColor: ui.foregroundInput.value,
+    backgroundColor: ui.backgroundInput.value,
+    contrast: calculateContrast(ui.foregroundInput.value, ui.backgroundInput.value)
+};
+
 init();
 
 function init(){
@@ -31,6 +37,10 @@ function init(){
 
     ui.colorInputs.forEach(input => {
         input.addEventListener('input', () => {
+            let stateProp = input.getAttribute('name');
+
+            state[stateProp] = input.value;
+
             updateView();
         });
     })
@@ -39,30 +49,36 @@ function init(){
     ui.swapButton.addEventListener('click', e => {
         e.preventDefault();
 
-        let oldForeground = foreground();
-        let oldBackground = background();
+        let oldForeground = state.foregroundColor;
+        let oldBackground = state.backgroundColor;
 
-        ui.foregroundInput.value = oldBackground;
-        ui.backgroundInput.value = oldForeground;
+        state.foregroundColor = oldBackground;
+        state.backgroundColor = oldForeground;
 
         updateView();
     });
 }
 
 function updateView(){
+    updateInputs();
     updateColors();
     updateResults();
 }
 
+function updateInputs(){
+    ui.foregroundInput.value = state.foregroundColor;
+    ui.backgroundInput.value = state.backgroundColor;
+}
+
 function updateColors(){
     if(isValid(ui.foregroundInput.value) && isValid(ui.foregroundInput.value)) {
-        document.body.style.background = background();
-        ui.example.style.color = foreground();
+        document.body.style.background = state.backgroundColor;
+        ui.example.style.color = state.foregroundColor;
     }
 }
 
 function updateResults(){
-    let contrast = Color(background()).contrast(Color(foreground()));
+    let contrast = calculateContrast(state.foregroundColor, state.backgroundColor);
 
     // ToDo: Investigate odd edge cases mentioned here:
     // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
@@ -81,6 +97,10 @@ function updateResults(){
     });
 }
 
+function calculateContrast(color1, color2) {
+    return Color(color1).contrast(Color(color2));
+}
+
 function isValid(color) {
     let valid = true;
 
@@ -94,11 +114,3 @@ function isValid(color) {
 
     return valid;
 };
-
-function background() {
-    return ui.backgroundInput.value;
-}
-
-function foreground() {
-    return ui.foregroundInput.value;
-}
