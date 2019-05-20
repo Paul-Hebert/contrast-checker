@@ -1,50 +1,51 @@
 var Color = require("color");
 
-const colorInputs = document.querySelectorAll('.js-color-input');
-const foregroundInput = document.getElementById('js-foreground');
-const backgroundInput = document.getElementById('js-background');
-const swapButton = document.getElementById('js-swap');
+const ui = {
+    colorInputs: document.querySelectorAll('.js-color-input'),
+    foregroundInput: document.getElementById('js-foreground'),
+    backgroundInput: document.getElementById('js-background'),
+    swapButton: document.getElementById('js-swap'),
 
-const contrast = document.getElementById('js-contrast');
-const smallText = document.getElementById('js-small-text');
-const largeText = document.getElementById('js-large-text');
+    contrast: document.getElementById('js-contrast'),
+    smallText: document.getElementById('js-small-text'),
+    largeText: document.getElementById('js-large-text'),
 
-const example = document.getElementById('js-example');
-
+    example: document.getElementById('js-example'),
+}
 
 init();
 
 function init(){
     updateColors();
 
-    colorInputs.forEach(input => {
+    ui.colorInputs.forEach(input => {
         input.addEventListener('input', () => {
             updateColors();
         });
     })
 
     // TODO: Handle keyboard event submission
-    swapButton.addEventListener('click', e => {
+    ui.swapButton.addEventListener('click', e => {
         e.preventDefault();
 
         let oldForeground = foreground();
         let oldBackground = background();
 
-        foregroundInput.value = oldBackground;
-        backgroundInput.value = oldForeground;
+        ui.foregroundInput.value = oldBackground;
+        ui.backgroundInput.value = oldForeground;
 
         updateColors();
     });
 }
 
 function updateColors(){
-    if(isValid(foregroundInput.value) && isValid(foregroundInput.value)) {
+    if(isValid(ui.foregroundInput.value) && isValid(ui.foregroundInput.value)) {
         document.body.style.background = background();
-        example.style.color = foreground();
+        ui.example.style.color = foreground();
 
         // ToDo: Investigate odd edge cases mentioned here:
         // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
-        contrast.innerText = Color(background()).contrast(Color(foreground())).toFixed(2);
+        ui.contrast.innerText = Color(background()).contrast(Color(foreground())).toFixed(2);
     }
 }
 
@@ -63,9 +64,9 @@ function isValid(color) {
 };
 
 function background() {
-    return backgroundInput.value;
+    return ui.backgroundInput.value;
 }
 
 function foreground() {
-    return foregroundInput.value;
+    return ui.foregroundInput.value;
 }
