@@ -9,9 +9,5 @@
     "icons": {
         "48": "icons/icon.png"
     }, 
-    "browser_action": {
-        "default_title": "Contrast Checker",
-        "default_icon": "icons/icon.png",  
-        "default_popup": "index.html"
-    }
-  }
+    "devtools_page": "devtools/index.html"
+}
