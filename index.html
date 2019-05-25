@@ -8,46 +8,48 @@
         <link rel="icon" href="icons/icon.png" type="image/x-icon" />
     </head>
     <body>
-        <div class="controls">
-            <h1>Contrast Checker</h1>
+        <div class="app">
+            <div class="controls">
+                <h1>Contrast Checker</h1>
 
-            <p>Enter two colors below to calculate their contrast ratio and WCAG compliance.</p>
+                <p>Enter two colors below to calculate their contrast ratio and WCAG compliance.</p>
 
-            <form class="colorForm">
-                <input class="colorForm__input js-color-input" type="text" id="js-foreground" value="#eee" name="foregroundColor">
+                <form class="colorForm">
+                    <input class="colorForm__input js-color-input" type="text" id="js-foreground" value="#eee" name="foregroundColor">
 
-                <button id="js-swap" class="colorForm__button">
-                    <svg class="colorForm__button-icon" viewBox="0 0 128 128" width="24" height="24">
-                        <line x1="112" y1="41" x2="16" y2="41"/>
-                        <polyline points="93,21 112.5,40.5 112.5,41 93,60.5 	"/>
+                    <button id="js-swap" class="colorForm__button">
+                        <svg class="colorForm__button-icon" viewBox="0 0 128 128" width="24" height="24">
+                            <line x1="112" y1="41" x2="16" y2="41"/>
+                            <polyline points="93,21 112.5,40.5 112.5,41 93,60.5 	"/>
 
-                        <line x1="16" y1="87" x2="112" y2="87"/>
-                        <polyline points="35,106.5 15.5,87 15.5,86.5 35,67 	"/>
-                    </svg>
-                </button>
+                            <line x1="16" y1="87" x2="112" y2="87"/>
+                            <polyline points="35,106.5 15.5,87 15.5,86.5 35,67 	"/>
+                        </svg>
+                    </button>
 
-                <input class="colorForm__input js-color-input" type="text" id="js-background" value="#437DE7" name="backgroundColor">
-            </form>
+                    <input class="colorForm__input js-color-input" type="text" id="js-background" value="#437DE7" name="backgroundColor">
+                </form>
 
-            <div class="output">
-                <p class="output__section">
-                    Contrast: <span id="js-contrast"></span>
-                </p>
-                <p class="output__section">
-                    Large Text: <span id="js-large-text"></span>
-                </p>
-                <p class="output__section">
-                    Small Text: <span id="js-small-text"></span>
-                </p>
+                <div class="output">
+                    <p class="output__section">
+                        Contrast: <span id="js-contrast"></span>
+                    </p>
+                    <p class="output__section">
+                        Large Text: <span id="js-large-text"></span>
+                    </p>
+                    <p class="output__section">
+                        Small Text: <span id="js-small-text"></span>
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div id="js-example" class="example">
+            <div id="js-example" class="example" contenteditable>
             <h2>Lorem Ipsum</h2>
 
             <p>
                 Lorem ipsum dolor sit amet, <b>consectetur adipiscing elit</b>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui <i>officia deserunt mollit anim</i> id est laborum.
             </p>
+            </div>
         </div>
     </body>
 </html>

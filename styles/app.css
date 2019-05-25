@@ -10,7 +10,17 @@
      * System font stack:
      * - https://css-tricks.com/snippets/css/system-font-stack/
      */
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-body: 
+        -apple-system, 
+        BlinkMacSystemFont, 
+        "Segoe UI", 
+        Roboto, 
+        Oxygen-Sans, 
+        Ubuntu, 
+        Cantarell, 
+        "Helvetica Neue", 
+        sans-serif;
+    /* TODO: Find a better monospace font stack */
     --font-code: monospace;
 
     --transition-default: ease-out 0.3s;
@@ -32,19 +42,21 @@ body {
     font-family: var(--font-body);
     line-height: 1.5;
     font-size: 1em;
-    /* This min height ensures firefox renders the popup at a minimum size */
-    min-height: 50em;
 }
 
-.controls {
-    background: var(--color-white-transparent);
+.app {
+    display:flex;
+    flex-wrap: wrap;
 }
 
 .controls, .example {
     margin: 1em;
     padding: 1em;
-    height:50vh;
     overflow: auto;
+}
+
+.controls {
+    background: var(--color-white-transparent);
 }
 
 h1, h2 {
@@ -54,6 +66,7 @@ h1, h2 {
 
 p {
     margin-bottom: 0.5em;
+    max-width: 30em;
 }
 
 .colorForm {
@@ -88,7 +101,9 @@ p {
     border-radius: 50%;
     padding: 0.5em;
 
-    transition: background var(--transition-default), transform var(--transition-default);
+    transition: 
+        background-color var(--transition-default), 
+        transform var(--transition-default);
 
     backface-visibility: hidden;
 }
@@ -125,4 +140,18 @@ body {
 .example h2,
 .example p {
     transition: color var(--transition-default);
+}
+
+.example a {
+    color: inherit;
+    font-weight: bold;
+}
+
+/* TODO Make these match the WCAG definitions*/
+.large-text {
+
+}
+
+.small-text {
+
 }
