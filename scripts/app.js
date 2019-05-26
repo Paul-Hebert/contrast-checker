@@ -11,6 +11,8 @@ const ui = {
     largeText: document.getElementById('js-large-text'),
 
     example: document.getElementById('js-example'),
+
+    shareLink: document.getElementById('js-share-link'),
 }
 
 const standards = {
@@ -29,6 +31,8 @@ const state = {
     backgroundColor: ui.backgroundInput.value,
     contrast: calculateContrast(ui.foregroundInput.value, ui.backgroundInput.value)
 };
+
+const shareLinkBase = 'fakeurl.com';
 
 init();
 
@@ -63,6 +67,7 @@ function updateView(){
     updateInputs();
     updateColors();
     updateResults();
+    updateShareLink();
 }
 
 function updateInputs(){
@@ -95,6 +100,14 @@ function updateResults(){
 
         ui[key].innerText = value;
     });
+}
+
+function updateShareLink() {
+    const shareLinkText = `${shareLinkBase}?fg=${state.foregroundColor}&bg=${state.backgroundColor}`;
+
+    ui.shareLink.value = shareLinkText;
+
+    console.log(shareLinkText);
 }
 
 function calculateContrast(color1, color2) {

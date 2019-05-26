@@ -10,9 +10,14 @@
     <body>
         <div class="app">
             <div class="controls">
-                <h1>Contrast Checker</h1>
+                <h1>
+                    Contrast Checker
+                </h1>
 
-                <p>Enter two colors below to calculate their contrast ratio and WCAG compliance.</p>
+                <p>
+                    Enter two colors below to calculate their contrast ratio and 
+                    WCAG compliance.
+                </p>
 
                 <form class="colorForm">
                     <input class="colorForm__input js-color-input" type="text" id="js-foreground" value="#eee" name="foregroundColor">
@@ -44,9 +49,48 @@
             </div>
 
             <div id="js-example" class="example" contenteditable>
-                <h2 class="large-text">Example Text (Click to Edit)</h2>
+                <h2>
+                    Large Text
+                </h2>
+
+                <p class="large-text">
+                    Large text is classified as being 18 points (24 pixels) 
+                    or larger.
+                </p>
+
+                <p class="large-text--bold">
+                    If the text is bold it only needs to be 14 points 
+                     or larger to 
+                    classify as large.
+                </p>
+
+                <h2>
+                    Small Text
+                </h2>
 
                 <p class="small-text">
+                    Small Text is classified as being smaller than 18 points 
+                    (24 pixels).
+                </p>
+
+                <p class="small-text--bold">
+                    If the text is bold it must be smaller than 14 points
+                    (18.<span class="overline">6</span> pixels) to classify 
+                    as small.
+                </p>
+
+                <h2>
+                    Point Conversion
+                </h2>
+
+                <p class="small-text">
+                    Although points are common in print typography, they are
+                    rarely used on the web. Web design tends to use pixels (or
+                    relative units) for font sizing. One point is equal to 
+                    1.<span class="overline">3</span> pixels.
+                </p>
+
+                <!-- <p class="small-text">
                     Maintaining a minimum level of text contrast is <i>critical</i> for the 
                     usability and accessibility or your sites and applications.
                 </p>
@@ -56,7 +100,11 @@
                     majority of users will be able to read and understand your text content, whether
                     they're colorblind, have poor vision, or are just reading off of a screen with 
                     glare from the sun.
-                </p>
+                </p> -->
+            </div>
+
+            <div class="footer">
+                <input type="text" class="share-link" id="js-share-link">
             </div>
         </div>
     </body>

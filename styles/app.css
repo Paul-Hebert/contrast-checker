@@ -24,6 +24,8 @@
     --font-code: monospace;
 
     --transition-default: ease-out 0.3s;
+
+    --footer-height: 2em;
 }
 
 * {
@@ -40,13 +42,31 @@
 body {
     color: var(--color-black);
     font-family: var(--font-body);
-    line-height: 1.5;
     font-size: 1em;
+    line-height: 1.5;
 }
 
 .app {
     display:flex;
     flex-wrap: wrap;
+    padding-bottom: var(--footer-height);
+}
+
+.footer {
+    align-items: center;
+    background: var(--color-white-transparent);
+    bottom: 0;
+    display: flex;
+    height: var(--footer-height);
+    left: 0;
+    padding: 0 1em;
+    position: absolute;
+    right: 0;
+}
+
+.share-link {
+    text-align: center;
+    width: 100%;
 }
 
 .controls, .example {
@@ -149,9 +169,24 @@ body {
 
 /* TODO Make these match the WCAG definitions*/
 .large-text {
+    font-size: 18pt;
+    font-weight: 400;
+}
 
+.large-text--bold {
+    font-size: 14pt;
+    font-weight: 600;
 }
 
 .small-text {
+    font-size: 14pt;
+}
 
+.small-text--bold {
+    font-size: 12pt;
+    font-weight: 600;
+}
+
+.overline {
+    text-decoration: overline;
 }
