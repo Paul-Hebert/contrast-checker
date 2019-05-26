@@ -16,14 +16,62 @@ const ui = {
 }
 
 const standards = {
-    smallText: {
-        AA: 4.5,
-        AAA: 7
-    },
-    largeText: {
-        AA: 3,
-        AAA: 4.5
-    }
+    smallText: [
+        {
+            minimum: 7,
+            score: "AAA",
+            details: `
+                This contrast ratio meets the highest level of contrast 
+                requirements for small text outlined by the WCAG.
+            `
+        },
+        {
+            minimum: 4.5,
+            score: "AA",
+            details: `
+                This contrast ratio meets the minimum requirements for 
+                small text. To meet the more stringent AAA requirements you need
+                a contrast ratio of 7 or above.
+            `
+        },
+        {
+            minimum: 0,
+            score: "Fail",
+            details: `
+                This contrast ratio fails to meet the minimum contrast ratios 
+                for small text. To meet the more minimum AA requirements you
+                need a contrast ratio of 4.5 or above.
+            `
+        },
+    ],
+    largeText: [
+        {
+            minimum: 4.5,
+            score: "AAA",
+            details: `
+                This contrast ratio meets the highest level of contrast 
+                requirements for large text outlined by the WCAG.
+            `
+        },
+        {
+            minimum: 3,
+            score: "AA",
+            details: `
+                This contrast ratio meets the minimum requirements for 
+                large text. To meet the more stringent AAA requirements you need
+                a contrast ratio of 4.5 or above.
+            `
+        },
+        {
+            minimum: 0,
+            score: "Fail",
+            details: `
+                This contrast ratio fails to meet the minimum contrast ratios 
+                for large text. To meet the more minimum AA requirements you
+                need a contrast ratio of 3 or above.
+            `
+        },
+    ]
 };
 
 const state = {
@@ -89,16 +137,20 @@ function updateResults(){
     // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
     ui.contrast.innerText = contrast.toFixed(2);
 
+    // TODO: This logic and naming could be improved.
     Object.keys(standards).forEach(key => {
-        let value = "Fail";
+        let value = "";
 
-        if(contrast >= standards[key].AAA) {
-            value = "AAA";
-        } else if(contrast >= standards[key].AA) {
-            value = "AA";
+        var textSize = standards[key];
+
+        for(let i = 0; i < textSize.length; i++) {
+            if(contrast >= textSize[i].minimum) {
+                value = `<b>${textSize[i].score}</b> — ${textSize[i].details}`;
+                break;
+            }
         }
 
-        ui[key].innerText = value;
+        ui[key].innerHTML = value;
     });
 }
 
@@ -106,8 +158,6 @@ function updateShareLink() {
     const shareLinkText = `${shareLinkBase}?fg=${state.foregroundColor}&bg=${state.backgroundColor}`;
 
     ui.shareLink.value = shareLinkText;
-
-    console.log(shareLinkText);
 }
 
 function calculateContrast(color1, color2) {
