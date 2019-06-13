@@ -9,5 +9,5 @@
     "icons": {
         "48": "icons/icon.png"
     }, 
-    "devtools_page": "devtools/index.html"
+    "devtools_page": "devtools.html"
 }

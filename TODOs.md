@@ -13,4 +13,7 @@
         - Modular scale
     - Split JS into logical chunks
     - Tests!
+    - PWA
+        - Add correctly sized icons
+        - Set BG/theme colors
 4. Improve Readme

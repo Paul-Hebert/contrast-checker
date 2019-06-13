@@ -4,6 +4,6 @@ window.browser = (function () {
 
 window.browser.devtools.panels.create(
     "Contrast Checker",
-    "../icons/icon.png",
-    "../index.html"
+    "icons/icon.png",
+    "index.html"
 );
