@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Paul-Hebert/contrast-checker#readme",
   "dependencies": {
     "@babel/core": "^7.4.4",
+    "browser-sync": "^2.26.7",
     "color": "^3.1.1",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",

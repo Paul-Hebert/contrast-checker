@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const betterRollup = require('gulp-better-rollup');
 const rollup = require('rollup');
+const browserSync = require('browser-sync').create();
 
 gulp.task("js", done => {
   const destinations = [
@@ -55,13 +56,26 @@ gulp.task('content', done => {
   done();
 });
 
+gulp.task('browser-sync', function() {
+  browserSync.init({
+      server: {
+          baseDir: "./dist/pwa"
+      }
+  });
+});
+
+gulp.task('reload', done => {
+  browserSync.reload();
+  done();
+});
+
 gulp.task('default', done => {
   // TODO: Why doesn't this run initially?
-  gulp.parallel('js', 'content');
+  gulp.series(gulp.parallel('js', 'content'), 'browser-sync')
 
   gulp.watch(
       'app/scripts/**',
-      gulp.series('js')
+      gulp.series('js', 'reload')
   );
 
   gulp.watch(
@@ -72,7 +86,7 @@ gulp.task('default', done => {
       'app/styles/**',
       'app/index.html'
   ],
-    gulp.series('content')
+    gulp.series('content', 'reload')
   );
 
   done();
