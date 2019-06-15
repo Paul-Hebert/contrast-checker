@@ -3,6 +3,11 @@
     <head>
         <title>Contrast Checker</title>
         <script src="scripts/app.js" defer></script>
+        
+        {{#if (compare mode '===' 'pwa')}}
+            <script src="pwa-features.js" defer></script>
+        {{/if}}
+
         <link rel="stylesheet" href="styles/app.css">
         <!-- TODO: Size correctly -->
         <link rel="icon" href="icons/icon.png" type="image/x-icon" />
@@ -12,7 +17,7 @@
         <div class="app">
             <div class="controls">
                 <h1>
-                    Contrast Checker {{ mode }}
+                    Contrast Checker
                 </h1>
 
                 <p>
