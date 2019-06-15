@@ -59,7 +59,7 @@ gulp.task('content', done => {
   done();
 });
 
-gulp.task('browser-sync', function() {
+gulp.task('serve', function() {
   browserSync.init({
       server: {
           baseDir: "./dist/pwa"
@@ -81,10 +81,9 @@ gulp.task('clean', () => {
     .pipe(clean());
 });
 
-gulp.task('default', done => {
-  // TODO: Why doesn't this run initially?
-  gulp.series('clean', gulp.parallel('js', 'content'), 'browser-sync')
+gulp.task('build', gulp.series('clean', gulp.parallel('js', 'content')));
 
+gulp.task('watch', done => {
   gulp.watch(
       'app/scripts/**',
       gulp.series('js', 'reload')
@@ -100,7 +99,7 @@ gulp.task('default', done => {
   ],
     gulp.series('content', 'reload')
   );
-
-  done();
 });
+
+gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
 
