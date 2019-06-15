@@ -1,5 +1,7 @@
 const gulp = require('gulp');
 const clean = require('gulp-clean');
+const handlebars = require('gulp-compile-handlebars');
+const rename = require('gulp-rename');
 
 const betterRollup = require('gulp-better-rollup');
 const rollup = require('rollup');
@@ -50,21 +52,33 @@ gulp.task('content', done => {
     gulp
       .src(`app/icons/**/*.*`)
       .pipe(gulp.dest(`dist/${destination}/icons`));
-
-    gulp
-      .src(`app/index.html`)
+ 
+    gulp.src('app/markup/easy-start.hbs')
+      .pipe(handlebars({
+        mode: destination
+      }))
+      .pipe(rename('index.html'))
+      .pipe(gulp.dest('dist'));
+ 
+    gulp.src('app/markup/index.hbs')
+      .pipe(handlebars({
+        mode: destination
+      }))
+      .pipe(rename('index.html'))
       .pipe(gulp.dest(`dist/${destination}`));
   });
 
   done();
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', done => {
   browserSync.init({
       server: {
-          baseDir: "./dist/pwa"
+          baseDir: "./dist"
       }
   });
+
+  done();
 });
 
 gulp.task('reload', done => {
@@ -99,6 +113,8 @@ gulp.task('watch', done => {
   ],
     gulp.series('content', 'reload')
   );
+
+  done();
 });
 
 gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
