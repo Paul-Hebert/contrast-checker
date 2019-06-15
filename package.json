@@ -30,6 +30,7 @@
     "rollup-plugin-node-resolve": "^5.0.0"
   },
   "devDependencies": {
+    "@cloudfour/hbs-helpers": "^0.10.0",
     "gulp-compile-handlebars": "^0.6.1"
   }
 }

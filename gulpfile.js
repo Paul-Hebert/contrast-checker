@@ -1,7 +1,9 @@
 const gulp = require('gulp');
 const clean = require('gulp-clean');
-const handlebars = require('gulp-compile-handlebars');
 const rename = require('gulp-rename');
+const handlebars = require('gulp-compile-handlebars');
+
+const helpers = require('@cloudfour/hbs-helpers');
 
 const betterRollup = require('gulp-better-rollup');
 const rollup = require('rollup');
@@ -61,9 +63,14 @@ gulp.task('content', done => {
       .pipe(gulp.dest('dist'));
  
     gulp.src('app/markup/index.hbs')
-      .pipe(handlebars({
-        mode: destination
-      }))
+      .pipe(handlebars(
+        {
+          mode: destination,
+        },
+        {
+          helpers: helpers
+        }
+      ))
       .pipe(rename('index.html'))
       .pipe(gulp.dest(`dist/${destination}`));
   });
@@ -109,7 +116,7 @@ gulp.task('watch', done => {
       'app/pwa/**',
       'app/icons/**',
       'app/styles/**',
-      'app/index.html'
+      'app/markup/**'
   ],
     gulp.series('content', 'reload')
   );
