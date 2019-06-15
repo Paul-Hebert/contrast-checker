@@ -7,7 +7,7 @@
         - Why can't I try/catch in a file rollup processes?
     - Handle RGBA
 3. Architecture
-    - Share code between extension and website
+    - Use templating to build separate HTML files for extension and PWA
     - Linting
     - CSS post/pre processing
         - Modular scale
@@ -16,4 +16,8 @@
     - PWA
         - Add correctly sized icons
         - Set BG/theme colors
+        - Service worker
 4. Improve Readme
+5. Design
+    - Redo layout and visual design
+    - Separate stylesheets to match different browsers dev tools when in extension mode
