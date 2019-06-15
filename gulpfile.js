@@ -1,6 +1,9 @@
 const gulp = require('gulp');
+const clean = require('gulp-clean');
+
 const betterRollup = require('gulp-better-rollup');
 const rollup = require('rollup');
+
 const browserSync = require('browser-sync').create();
 
 gulp.task("js", done => {
@@ -69,9 +72,18 @@ gulp.task('reload', done => {
   done();
 });
 
+gulp.task('clean', () => {
+  return gulp
+    .src('dist', {
+      allowEmpty: true,
+      read: false,
+    })
+    .pipe(clean());
+});
+
 gulp.task('default', done => {
   // TODO: Why doesn't this run initially?
-  gulp.series(gulp.parallel('js', 'content'), 'browser-sync')
+  gulp.series('clean', gulp.parallel('js', 'content'), 'browser-sync')
 
   gulp.watch(
       'app/scripts/**',
