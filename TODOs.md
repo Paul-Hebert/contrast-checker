@@ -1,6 +1,7 @@
-1. Icon
+1. Branding
+    - Finalize domain name/brand name
     - Create branded icon
-    - Save icon in all necessary PNG sizes (Chrome doesn't support SVGs)
+        - Save icon in all necessary PNG sizes (Chrome doesn't support SVGs)
 2. Color logic
     - Figure out how to avoid errors from Color
         - Do they have a validation function?
@@ -16,7 +17,6 @@
         - Add correctly sized icons
         - Set BG/theme colors
         - Refine Service worker behavior
-    - Hosting!
 4. Improve Readme
 5. Design
     - Redo layout and visual design
