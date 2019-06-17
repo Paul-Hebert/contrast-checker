@@ -17,7 +17,10 @@
         - Add correctly sized icons
         - Set BG/theme colors
         - Refine Service worker behavior
-4. Improve Readme
+4. Docs
+    - Improve Readme
 5. Design
     - Redo layout and visual design
     - Separate stylesheets to match different browsers dev tools when in extension mode
+6. Bugs
+    - PWA works with`/index.html` but not `/`
