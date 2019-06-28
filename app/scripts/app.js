@@ -115,9 +115,7 @@ function updateView(){
     updateInputs();
     updateColors();
     updateResults();
-    if(ui.shareLink) {
-        updateShareLink();
-    }
+    updateShareLink();
 }
 
 function updateInputs(){
@@ -157,9 +155,11 @@ function updateResults(){
 }
 
 function updateShareLink() {
-    const shareLinkText = `${shareLinkBase}?fg=${state.foregroundColor}&bg=${state.backgroundColor}`;
+    if(ui.shareLink) {
+        const shareLinkText = `${shareLinkBase}?fg=${state.foregroundColor}&bg=${state.backgroundColor}`;
 
-    ui.shareLink.value = shareLinkText;
+        ui.shareLink.value = shareLinkText;
+    }
 }
 
 function calculateContrast(color1, color2) {
