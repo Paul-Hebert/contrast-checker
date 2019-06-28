@@ -108,10 +108,13 @@
                     glare from the sun.
                 </p> -->
             </div>
-
-            <div class="footer">
-                <input type="text" class="share-link" id="js-share-link">
-            </div>
+        
+        
+            {{#if (compare mode '!==' 'pwa')}}
+                <div class="footer">
+                    <input type="text" class="share-link" id="js-share-link">
+                </div>
+            {{/if}}
         </div>
     </body>
 </html>

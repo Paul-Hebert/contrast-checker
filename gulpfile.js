@@ -48,19 +48,12 @@ gulp.task('content', done => {
       .pipe(gulp.dest(`dist/${destination}`));
 
     gulp
-      .src(`app/styles/**/*.*`)
+      .src(`app/styles/app/**/*.*`)
       .pipe(gulp.dest(`dist/${destination}/styles`));
 
     gulp
       .src(`app/icons/**/*.*`)
       .pipe(gulp.dest(`dist/${destination}/icons`));
- 
-    gulp.src('app/markup/easy-start.hbs')
-      .pipe(handlebars({
-        mode: destination
-      }))
-      .pipe(rename('index.html'))
-      .pipe(gulp.dest('dist'));
  
     gulp.src('app/markup/index.hbs')
       .pipe(handlebars(
@@ -75,8 +68,19 @@ gulp.task('content', done => {
       .pipe(gulp.dest(`dist/${destination}`));
   });
 
+  gulp.src('app/markup/easy-start.hbs')
+    .pipe(handlebars())
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('dist'));
+
+  gulp
+    .src(`app/styles/easy-start/**/*.*`)
+    .pipe(gulp.dest(`dist/styles`));
+
   done();
 });
+
+
 
 gulp.task('serve', done => {
   browserSync.init({
@@ -116,7 +120,8 @@ gulp.task('watch', done => {
       'app/pwa/**',
       'app/icons/**',
       'app/styles/**',
-      'app/markup/**'
+      'app/markup/**',
+      'app/index.html'
   ],
     gulp.series('content', 'reload')
   );

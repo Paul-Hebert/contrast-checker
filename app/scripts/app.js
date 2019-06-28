@@ -115,7 +115,9 @@ function updateView(){
     updateInputs();
     updateColors();
     updateResults();
-    updateShareLink();
+    if(ui.shareLink) {
+        updateShareLink();
+    }
 }
 
 function updateInputs(){
