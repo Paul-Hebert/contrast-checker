@@ -84,9 +84,8 @@ gulp.task('content', done => {
 
 gulp.task('serve', done => {
   browserSync.init({
-      server: {
-          baseDir: "./dist"
-      }
+    notify: false,
+    server: "./dist"
   });
 
   done();
