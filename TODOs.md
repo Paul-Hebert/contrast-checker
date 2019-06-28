@@ -6,7 +6,7 @@
     - Figure out how to avoid errors from Color
         - Do they have a validation function?
         - Why can't I try/catch in a file rollup processes?
-    - Handle RGBA
+    - Handle RGBA?
 3. Architecture
     - Linting!
     - CSS post/pre processing

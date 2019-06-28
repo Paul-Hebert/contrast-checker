@@ -10,10 +10,8 @@ const rollup = require('rollup');
 
 const browserSync = require('browser-sync').create();
 
-gulp.task("js", done => {
-  const destinations = [
-    'dist/pwa/scripts', 'dist/extension/scripts'
-  ]
+gulp.task('js', done => {
+  const destinations = ['dist/pwa/scripts', 'dist/extension/scripts'];
 
   destinations.forEach(destination => {
     gulp
@@ -25,11 +23,11 @@ gulp.task("js", done => {
             plugins: [
               require('rollup-plugin-node-resolve')(),
               require('rollup-plugin-commonjs')(),
-              require('rollup-plugin-babel')(),
-            ],
+              require('rollup-plugin-babel')()
+            ]
           },
           {
-            format: 'iife',
+            format: 'iife'
           }
         )
       )
@@ -51,41 +49,39 @@ gulp.task('content', done => {
       .src(`app/styles/app/**/*.*`)
       .pipe(gulp.dest(`dist/${destination}/styles`));
 
+    gulp.src(`app/icons/**/*.*`).pipe(gulp.dest(`dist/${destination}/icons`));
+
     gulp
-      .src(`app/icons/**/*.*`)
-      .pipe(gulp.dest(`dist/${destination}/icons`));
- 
-    gulp.src('app/markup/index.hbs')
-      .pipe(handlebars(
-        {
-          mode: destination,
-        },
-        {
-          helpers: helpers
-        }
-      ))
+      .src('app/markup/index.hbs')
+      .pipe(
+        handlebars(
+          {
+            mode: destination
+          },
+          {
+            helpers
+          }
+        )
+      )
       .pipe(rename('index.html'))
       .pipe(gulp.dest(`dist/${destination}`));
   });
 
-  gulp.src('app/markup/easy-start.hbs')
+  gulp
+    .src('app/markup/easy-start.hbs')
     .pipe(handlebars())
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist'));
 
-  gulp
-    .src(`app/styles/easy-start/**/*.*`)
-    .pipe(gulp.dest(`dist/styles`));
+  gulp.src(`app/styles/easy-start/**/*.*`).pipe(gulp.dest(`dist/styles`));
 
   done();
 });
 
-
-
 gulp.task('serve', done => {
   browserSync.init({
     notify: false,
-    server: "./dist"
+    server: './dist'
   });
 
   done();
@@ -100,7 +96,7 @@ gulp.task('clean', () => {
   return gulp
     .src('dist', {
       allowEmpty: true,
-      read: false,
+      read: false
     })
     .pipe(clean());
 });
@@ -108,10 +104,7 @@ gulp.task('clean', () => {
 gulp.task('build', gulp.series('clean', gulp.parallel('js', 'content')));
 
 gulp.task('watch', done => {
-  gulp.watch(
-      'app/scripts/**',
-      gulp.series('js', 'reload')
-  );
+  gulp.watch('app/scripts/**', gulp.series('js', 'reload'));
 
   gulp.watch(
     [
@@ -121,7 +114,7 @@ gulp.task('watch', done => {
       'app/styles/**',
       'app/markup/**',
       'app/index.html'
-  ],
+    ],
     gulp.series('content', 'reload')
   );
 
@@ -129,4 +122,3 @@ gulp.task('watch', done => {
 });
 
 gulp.task('default', gulp.series('build', gulp.parallel('serve', 'watch')));
-

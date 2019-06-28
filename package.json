@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx gulp"
+    "start": "npx gulp",
+    "check-lint": "prettier --list-different '**/*.js' && eslint '**/*.js'",
+    "lint": "prettier --write '**/*.js' && eslint --fix '**/*.js'"
+  },
+  "eslintConfig": {
+    "extends": "plugin:@cloudfour/recommended"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "repository": {
     "type": "git",
@@ -30,7 +38,10 @@
     "rollup-plugin-node-resolve": "^5.0.0"
   },
   "devDependencies": {
+    "@cloudfour/eslint-plugin": "^3.0.0",
     "@cloudfour/hbs-helpers": "^0.10.0",
-    "gulp-compile-handlebars": "^0.6.1"
+    "eslint": "^6.0.1",
+    "gulp-compile-handlebars": "^0.6.1",
+    "prettier": "^1.18.2"
   }
 }
