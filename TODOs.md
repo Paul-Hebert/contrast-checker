@@ -8,7 +8,6 @@
         - Why can't I try/catch in a file rollup processes?
     - Handle RGBA?
 3. Architecture
-    - Linting!
     - CSS post/pre processing
         - Modular scale
     - Split JS into logical chunks

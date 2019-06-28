@@ -1,3 +1,5 @@
+/* eslint-env serviceworker */
+
 const cacheName = 'primaryCache';
 
 self.addEventListener('install', function(event) {
