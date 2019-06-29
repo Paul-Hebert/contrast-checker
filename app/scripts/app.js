@@ -1,6 +1,7 @@
 import { ui } from './helpers/ui';
 import { state } from './helpers/state';
 import { updateView } from './helpers/update-view';
+import { isValid } from './helpers/colors';
 
 init();
 
@@ -9,11 +10,14 @@ function init() {
 
   ui.colorInputs.forEach(input => {
     input.addEventListener('input', () => {
-      const stateProp = input.getAttribute('name');
+      // TODO: If invalid update state and display that.
+      if (isValid(input.value)) {
+        const stateProp = input.getAttribute('name');
 
-      state[stateProp] = input.value;
+        state[stateProp] = input.value;
 
-      updateView();
+        updateView();
+      }
     });
   });
 

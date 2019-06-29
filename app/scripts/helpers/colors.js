@@ -1,4 +1,5 @@
 import Color from 'color';
+import colorString from 'color-string';
 
 /**
  * Calculare Contrast
@@ -18,21 +19,10 @@ export function calculateContrast(color1, color2) {
  * Determines whether a string is a valid color.
  * RGBA and HSLA are considered invalid.
  *
- * CURRENTLY BROKEN - always returns true
  *
  * @param {string} color
- * @returns {{boolean}}
+ * @returns {boolean}
  */
 export function isValid(color) {
-  const valid = true;
-
-  // TODO: Figure out why rollup doesn't like this and fix it
-  // Or, even better, figure out how to validate a color in Color.js
-  // try {
-  //     Color(color);
-  // } catch {
-  //     valid = false;
-  // }
-
-  return valid;
+  return Boolean(colorString.get.rgb(color));
 }
