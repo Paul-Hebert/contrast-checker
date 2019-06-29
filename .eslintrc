@@ -1,0 +1,6 @@
+{
+  "extends": ["plugin:@cloudfour/recommended"],
+  "rules": {
+    "no-warning-comments": "off"
+  }
+}
